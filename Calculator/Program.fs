@@ -37,7 +37,7 @@ let calculate expression =
         let op1 = currentOp.Pop()
         if allOperators.Count > 0 then
             let op0 = allOperators.Dequeue()
-            if value op0 > value op1 then
+            if value op0 < value op1 then
                 currentNum.Push (perform op1 (currentNum.Pop()) (currentNum.Pop()))
             else
                 currentOp.Push(op1)
@@ -51,7 +51,7 @@ let calculate expression =
 
 [<EntryPoint>]
 let main argv =
-    "1 + 2 * 3"
+    Console.ReadLine()
     |> calculate
     |> Console.WriteLine
     0 
