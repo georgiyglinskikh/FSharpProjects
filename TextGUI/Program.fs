@@ -68,7 +68,7 @@ let main argv =
                          |> string) + " - " + (b
                                                |> snd
                                                |> string)
-                    + "\r\n") " " wordsByDecending
+                    + "\r\n") "" wordsByDecending
         else
             textBox.Enabled <- false
             textBox.Text <- "")
