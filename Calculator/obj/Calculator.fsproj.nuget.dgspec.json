@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\repos\\FSharp\\FSharpProjects\\TextGUI\\TextGUI.fsproj": {}
+    "C:\\repos\\FSharp\\FSharpProjects\\Calculator\\Calculator.fsproj": {}
   },
   "projects": {
-    "C:\\repos\\FSharp\\FSharpProjects\\TextGUI\\TextGUI.fsproj": {
+    "C:\\repos\\FSharp\\FSharpProjects\\Calculator\\Calculator.fsproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\repos\\FSharp\\FSharpProjects\\TextGUI\\TextGUI.fsproj",
-        "projectName": "TextGUI",
-        "projectPath": "C:\\repos\\FSharp\\FSharpProjects\\TextGUI\\TextGUI.fsproj",
+        "projectUniqueName": "C:\\repos\\FSharp\\FSharpProjects\\Calculator\\Calculator.fsproj",
+        "projectName": "Calculator",
+        "projectPath": "C:\\repos\\FSharp\\FSharpProjects\\Calculator\\Calculator.fsproj",
         "packagesPath": "C:\\Users\\georg\\.nuget\\packages\\",
-        "outputPath": "C:\\repos\\FSharp\\FSharpProjects\\TextGUI\\obj\\",
+        "outputPath": "C:\\repos\\FSharp\\FSharpProjects\\Calculator\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\georg\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -34,10 +34,6 @@
             "FSharp.Core": {
               "target": "Package",
               "version": "[4.7.0, )"
-            },
-            "System.Windows.Forms": {
-              "target": "Package",
-              "version": "[4.0.0, )"
             }
           },
           "imports": [
@@ -53,9 +49,6 @@
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
-            },
-            "Microsoft.WindowsDesktop.App.WindowsForms": {
-              "privateAssets": "none"
             }
           },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
