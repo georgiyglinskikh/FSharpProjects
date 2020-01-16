@@ -19,7 +19,7 @@ let perform opertator num0 num1 =
     | "-" -> num1 - num0
     | "*" -> num1 * num0
     | "/" -> num1 / num0
-    | "**" -> num1 ** float num0
+    | "**" -> num1 ** num0
     | _ -> 0.
 
 let calculate expression =
