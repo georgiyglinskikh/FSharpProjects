@@ -15,11 +15,11 @@ let value operator =
 
 let perform opertator num0 num1 =
     match opertator with
-    | "+" -> num0 + num1
-    | "-" -> num0 - num1
-    | "*" -> num0 * num1
-    | "/" -> num0 / num1
-    | "**" -> int ((float num0) ** (float num1))
+    | "+" -> num1 + num0
+    | "-" -> num1 - num0
+    | "*" -> num1 * num0
+    | "/" -> num1 / num0
+    | "**" -> int ((float num1) ** (float num0))
     | _ -> 0
 
 let calculate expression =
@@ -61,7 +61,12 @@ let calculate expression =
 
 [<EntryPoint>]
 let main argv =
-    Console.ReadLine()
-    |> calculate
-    |> Console.WriteLine
+    if argv.Length = 1 then
+        argv.[0]
+        |> calculate
+        |> Console.WriteLine
+    else
+        Console.ReadLine()
+        |> calculate
+        |> Console.WriteLine
     0
