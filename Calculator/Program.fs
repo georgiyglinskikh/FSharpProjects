@@ -22,9 +22,20 @@ let perform opertator num0 num1 =
     | "**" -> num1 ** num0
     | _ -> 0.
 
-let calculate expression =
+let rec calculate (expression: string) =
+    let mutable expressionLoc = expression
+    while expressionLoc.Contains "(" || expressionLoc.Contains ")" do
+        expressionLoc <-
+            (if (expressionLoc.IndexOf "(") > 0
+             then expressionLoc.[..((expressionLoc.IndexOf "(") - 1)]
+             else "")
+            + string (calculate (expressionLoc.[((expressionLoc.IndexOf "(") + 1)..((expressionLoc.IndexOf ")") - 1)]))
+            + (if (expressionLoc.IndexOf ")") < expressionLoc.Length
+               then expressionLoc.[((expressionLoc.IndexOf ")") + 1)..]
+               else "")
+
     let stuff =
-        Regex.Matches(expression, @"((\d+\.\d+)|(\d+))|(\+|\-|\/|((\*\*)|\*))")
+        Regex.Matches(expressionLoc, @"((\d+\.\d+)|(\d+))|(\+|\-|\/|((\*\*)|\*)|\^)")
         |> (fun col -> [ for i in col -> i.Value ])
 
     let allNumbers = Queue<float>()
@@ -37,26 +48,29 @@ let calculate expression =
     |> List.filter (fun el -> value el <> 0)
     |> List.iter allOperators.Enqueue
 
-    let currentNum = Stack()
-    let currentOp = Stack()
+    if allOperators.Count <> 0 then
+        let currentNum = Stack()
+        let currentOp = Stack()
 
-    currentNum.Push(allNumbers.Dequeue())
-    currentOp.Push(allOperators.Dequeue())
-    currentNum.Push(allNumbers.Dequeue())
+        currentNum.Push(allNumbers.Dequeue())
+        currentOp.Push(allOperators.Dequeue())
+        currentNum.Push(allNumbers.Dequeue())
 
-    while currentOp.Count > 0 do
-        let op1 = currentOp.Pop()
-        if allOperators.Count > 0 then
-            let op0 = allOperators.Dequeue()
-            if value op0 < value op1
-            then currentNum.Push(perform op1 (currentNum.Pop()) (currentNum.Pop()))
-            else currentOp.Push(op1)
-            currentNum.Push(allNumbers.Dequeue())
-            currentOp.Push(op0)
-        else
-            currentNum.Push(perform op1 (currentNum.Pop()) (currentNum.Pop()))
+        while currentOp.Count > 0 do
+            let op1 = currentOp.Pop()
+            if allOperators.Count > 0 then
+                let op0 = allOperators.Dequeue()
+                if value op0 < value op1
+                then currentNum.Push(perform op1 (currentNum.Pop()) (currentNum.Pop()))
+                else currentOp.Push(op1)
+                currentNum.Push(allNumbers.Dequeue())
+                currentOp.Push(op0)
+            else
+                currentNum.Push(perform op1 (currentNum.Pop()) (currentNum.Pop()))
 
-    currentNum.Pop()
+        currentNum.Pop()
+    else
+        allNumbers.Dequeue()
 
 
 [<EntryPoint>]
