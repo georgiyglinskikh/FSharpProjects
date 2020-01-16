@@ -24,7 +24,7 @@ let perform opertator num0 num1 =
 
 let calculate expression =
     let stuff =
-        Regex.Matches(expression, @"(\d+)|(\+|\-|\*|\/|(\*\*))")
+        Regex.Matches(expression, @"(\d+)|(\+|\-|\/|((\*\*)|\*))")
         |> (fun col -> [ for i in col -> i.Value ])
 
     let allNumbers = Queue<int>()
