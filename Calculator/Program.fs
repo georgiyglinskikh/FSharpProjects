@@ -19,18 +19,18 @@ let perform opertator num0 num1 =
     | "-" -> num1 - num0
     | "*" -> num1 * num0
     | "/" -> num1 / num0
-    | "**" -> int ((float num1) ** (float num0))
-    | _ -> 0
+    | "**" -> num1 ** float num0
+    | _ -> 0.
 
 let calculate expression =
     let stuff =
-        Regex.Matches(expression, @"(\d+)|(\+|\-|\/|((\*\*)|\*))")
+        Regex.Matches(expression, @"((\d+\.\d+)|(\d+))|(\+|\-|\/|((\*\*)|\*))")
         |> (fun col -> [ for i in col -> i.Value ])
 
-    let allNumbers = Queue<int>()
+    let allNumbers = Queue<float>()
     stuff
     |> List.filter (fun el -> value el = 0)
-    |> List.map int
+    |> List.map float
     |> List.iter allNumbers.Enqueue
     let allOperators = Queue<string>()
     stuff
