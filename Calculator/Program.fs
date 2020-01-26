@@ -35,7 +35,7 @@ let rec calculate (expression: string) =
                else "")
 
     let stuff =
-        Regex.Matches(expressionLoc, @"((\d+\.\d+)|(\d+))|(\+|\-|\/|((\*\*)|\*)|\^)")
+        Regex.Matches(expressionLoc, @"((\d+\.\d+)|(\d+))|(\+|\-|\/|((\*\*)|\*))")
         |> (fun col -> [ for i in col -> i.Value ])
 
     let allNumbers = Queue<float>()

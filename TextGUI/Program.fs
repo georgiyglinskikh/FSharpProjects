@@ -1,4 +1,4 @@
-﻿open System
+open System
 open System.Net
 open System.Text.RegularExpressions
 open System.Windows.Forms
@@ -25,6 +25,7 @@ let getText path = get path @"(\w+)"
 let getAuthors() = getReferences url
 let getBooks author = getReferences (url + author + "/")
 let getUrlBooksText author book = (url + author + "/" + book)
+
 
 
 [<EntryPoint>]
