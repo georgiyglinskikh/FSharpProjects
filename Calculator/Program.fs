@@ -1,6 +1,9 @@
 open System
 open System.Text.RegularExpressions
 open System.Collections.Generic
+open SFML.Graphics
+open SFML.Window
+open SFML.System
 
 let value operator =
     match operator with
@@ -22,8 +25,8 @@ let perform opertator num0 num1 =
     | "**" -> num1 ** num0
     | _ -> 0.
 
-let rec calculate (expression: string) =
-    let mutable expressionLoc = expression
+let rec calculate expression =
+    let mutable expressionLoc = string expression
     while expressionLoc.Contains "(" || expressionLoc.Contains ")" do
         expressionLoc <-
             (if (expressionLoc.IndexOf "(") > 0
@@ -72,15 +75,52 @@ let rec calculate (expression: string) =
     else
         allNumbers.Dequeue()
 
+let draw expression =
+    let window = new RenderWindow(VideoMode(800u, 600u), "Visualize")
+    window.SetVerticalSyncEnabled true
+
+    window.Closed.Add(fun args -> window.Close())
+    window.Resized.Add(fun args ->
+        window.Clear()
+        window.Draw
+            ([| for i in 0 .. int window.Size.X ->
+                    Vertex
+                        (Position =
+                            Vector2f
+                                (float32 i,
+                                 Regex.Replace(expression, "x", string i)
+                                 |> calculate
+                                 |> float32), Color = Color.White) |], PrimitiveType.LineStrip)
+
+        window.Display())
+
+    window.Clear()
+    window.Draw
+        ([| for i in 0 .. int window.Size.X ->
+                Vertex
+                    (Position =
+                        Vector2f
+                            (float32 i,
+                             Regex.Replace(expression, "x", string i)
+                             |> calculate
+                             |> float32), Color = Color.White) |], PrimitiveType.LineStrip)
+
+    window.Display()
+
+    while window.IsOpen do
+        window.DispatchEvents()
+
+let visualize (expression: string) =
+    if expression.Contains "x" then
+        draw expression
+    else
+        expression
+        |> calculate
+        |> Console.WriteLine
 
 [<EntryPoint>]
 let main argv =
-    if argv.Length = 1 then
-        argv.[0]
-        |> calculate
-        |> Console.WriteLine
-    else
-        Console.ReadLine()
-        |> calculate
-        |> Console.WriteLine
+    let expression = argv.[0]
+
+    visualize expression
     0

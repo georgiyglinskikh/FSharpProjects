@@ -9,6 +9,8 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Calculator", "Calculator\Ca
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Gravity", "Gravity\Gravity.fsproj", "{969776B5-8446-4BEC-BBEB-C511677A5979}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Electricity", "Electricity\Electricity.fsproj", "{0CA9EBCF-68BD-4896-B154-5938EA063186}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -58,5 +60,17 @@ Global
 		{969776B5-8446-4BEC-BBEB-C511677A5979}.Release|x64.Build.0 = Release|Any CPU
 		{969776B5-8446-4BEC-BBEB-C511677A5979}.Release|x86.ActiveCfg = Release|Any CPU
 		{969776B5-8446-4BEC-BBEB-C511677A5979}.Release|x86.Build.0 = Release|Any CPU
+		{0CA9EBCF-68BD-4896-B154-5938EA063186}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CA9EBCF-68BD-4896-B154-5938EA063186}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CA9EBCF-68BD-4896-B154-5938EA063186}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{0CA9EBCF-68BD-4896-B154-5938EA063186}.Debug|x64.Build.0 = Debug|Any CPU
+		{0CA9EBCF-68BD-4896-B154-5938EA063186}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0CA9EBCF-68BD-4896-B154-5938EA063186}.Debug|x86.Build.0 = Debug|Any CPU
+		{0CA9EBCF-68BD-4896-B154-5938EA063186}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CA9EBCF-68BD-4896-B154-5938EA063186}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0CA9EBCF-68BD-4896-B154-5938EA063186}.Release|x64.ActiveCfg = Release|Any CPU
+		{0CA9EBCF-68BD-4896-B154-5938EA063186}.Release|x64.Build.0 = Release|Any CPU
+		{0CA9EBCF-68BD-4896-B154-5938EA063186}.Release|x86.ActiveCfg = Release|Any CPU
+		{0CA9EBCF-68BD-4896-B154-5938EA063186}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
