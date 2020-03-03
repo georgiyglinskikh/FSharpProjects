@@ -42,14 +42,12 @@ let rec calculate expression =
         |> (fun col -> [ for i in col -> i.Value ])
 
     let allNumbers = Queue<float>()
-    stuff
-    |> List.filter (fun el -> value el = 0)
-    |> List.map float
-    |> List.iter allNumbers.Enqueue
+    List.iter (fun i ->
+        stuff.[i]
+        |> float
+        |> allNumbers.Enqueue) [ for i in 0 .. 2 .. (stuff.Length - 1) -> i ]
     let allOperators = Queue<string>()
-    stuff
-    |> List.filter (fun el -> value el <> 0)
-    |> List.iter allOperators.Enqueue
+    List.iter (fun i -> stuff.[i] |> allOperators.Enqueue) [ for i in 1 .. 2 .. (stuff.Length - 1) -> i ]
 
     if allOperators.Count <> 0 then
         let currentNum = Stack()
@@ -120,7 +118,7 @@ let visualize (expression: string) =
 
 [<EntryPoint>]
 let main argv =
-    let expression = argv.[0]
+    let expression = if argv.Length > 0 then argv.[0] else Console.ReadLine()
 
     visualize expression
     0
