@@ -27,7 +27,7 @@ let perform opertator num0 num1 =
 
 let rec calculate expression =
     let mutable expressionLoc = string expression
-    while expressionLoc.Contains "(" || expressionLoc.Contains ")" do
+    while expressionLoc.Contains "(" && expressionLoc.Contains ")" do
         expressionLoc <-
             (if (expressionLoc.IndexOf "(") > 0
              then expressionLoc.[..((expressionLoc.IndexOf "(") - 1)]
